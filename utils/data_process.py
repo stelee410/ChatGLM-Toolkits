@@ -62,7 +62,6 @@ def convert_jsonl2ds(tokenizer, config, source_path, target_path,max_seq_length 
   dataset = datasets.Dataset.from_generator(
         lambda: read_jsonl(tokenizer, config, source_path, max_seq_length, skip_overlength)
   )
-  import pdb; pdb.set_trace()
   dataset.save_to_disk(target_path) # type: ignore
 
 def convert_json2ds(tokenizer, config, json_path, target_path, max_seq_length=384, skip_overlength = False):
