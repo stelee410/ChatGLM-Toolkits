@@ -6,3 +6,4 @@ tqdm
 peft
 accelerate
 bitsandbytes
+scipy

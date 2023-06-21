@@ -1,2 +1,2 @@
-from model import *
-from modified_trainer import *
+from .model import *
+from .modified_trainer import *

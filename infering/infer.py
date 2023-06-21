@@ -18,7 +18,7 @@ class ChatBot:
     def __init__(self, model, tokenizer):
         self.model = model
         self.tokenizer = tokenizer
-    def quick_chat(self, prompt, history=[])
+    def quick_chat(self, prompt, history=[]):
         response, history = self.model.chat(self.tokenizer, prompt,[])
         return response, history
     def predict(self,prompt, temperature = 0):
