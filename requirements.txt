@@ -7,3 +7,4 @@ peft
 accelerate
 bitsandbytes
 scipy
+tensorboard
