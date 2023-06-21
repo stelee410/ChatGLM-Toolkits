@@ -1,2 +1,4 @@
+import config
 if __name__ == "__main__":
-    print("Hello, world!")
+    print("=== traing by pre-config ===")
+    
