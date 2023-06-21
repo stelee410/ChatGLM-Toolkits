@@ -19,12 +19,12 @@ def format_example(example):
     target = example[KEY_OUTPUT]
     return {"context": context, "target": target}
 
-def preprocess(tokenizer, config, example, max_seq_length = MAX_SEQ_LEN):
+def preprocess(tokenizer, config, example, max_seq_length):
     context = example[KEY_CONTEXT]
     target = example[KEY_TARGET]
-    context_ids = tokenizer.encode(context,max_seq_length = max_seq_length, truncation=True)
+    context_ids = tokenizer.encode(context,max_length = max_seq_length, truncation=True)
     target_ids = tokenizer.encode(target,
-                                  max_seq_length = max_seq_length, 
+                                  max_length = max_seq_length, 
                                   truncation=True, 
                                   add_special_tokens=False)
     input_ids = context_ids + target_ids + [config.eos_token_id]
@@ -52,7 +52,7 @@ def read_jsonl(tokenizer, config, path, max_seq_length, skip_overlength=False):
   with open(path, "r") as f:
       for line in tqdm(f.readlines()):
         example = json.loads(line)
-        feature = preprocess(tokenizer, config, example, max_seq_length=max_seq_length)
+        feature = preprocess(tokenizer, config, example, max_seq_length)
         if skip_overlength and len(feature["input_ids"]) > max_seq_length:
           continue
         feature["input_ids"] = feature["input_ids"][:max_seq_length]
@@ -62,6 +62,7 @@ def convert_jsonl2ds(tokenizer, config, source_path, target_path,max_seq_length 
   dataset = datasets.Dataset.from_generator(
         lambda: read_jsonl(tokenizer, config, source_path, max_seq_length, skip_overlength)
   )
+  import pdb; pdb.set_trace()
   dataset.save_to_disk(target_path) # type: ignore
 
 def convert_json2ds(tokenizer, config, json_path, target_path, max_seq_length=384, skip_overlength = False):
