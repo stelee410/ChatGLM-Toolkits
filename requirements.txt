@@ -1,0 +1,9 @@
+icetk
+transformers
+sentencepiece
+cpm_kernels
+datasets
+tqdm
+peft
+accelerate
+bitsandbytes
