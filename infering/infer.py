@@ -12,6 +12,7 @@ def get_peft_model(model_path, lora_path):
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     model = AutoModel.from_pretrained(model_path, trust_remote_code=True,load_in_8bit=True,device_map="auto")
     model = PeftModel.from_pretrained(model, lora_path)
+    model.eval() #model to freeze
     return model, tokenizer
 
 class ChatBot:
