@@ -1,4 +1,3 @@
-icetk
 transformers
 sentencepiece
 cpm_kernels
