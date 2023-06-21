@@ -52,7 +52,7 @@ def read_jsonl(tokenizer, config, path, max_seq_length, skip_overlength=False):
   with open(path, "r") as f:
       for line in tqdm(f.readlines()):
         example = json.loads(line)
-        feature = preprocess(tokenizer, config, example, max_seq_length)
+        feature = preprocess(tokenizer, config, example, max_seq_length=max_seq_length)
         if skip_overlength and len(feature["input_ids"]) > max_seq_length:
           continue
         feature["input_ids"] = feature["input_ids"][:max_seq_length]
