@@ -16,7 +16,7 @@ def main():
     model_path = args.model_path
     dataset_path = args.dataset_path
     saved_path = args.saved_path
-    command = args.commands
+    command = args.command
     simple_test = args.simple_test
 
     if command == "dry": #dry run
