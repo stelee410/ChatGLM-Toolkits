@@ -15,7 +15,7 @@ def training(model_path, dataset_path):
           fp16 =True,
           gradient_accumulation_steps=1,
           per_device_train_batch_size = 1,
-          learning_rate = 1e-4,
+          learning_rate = 2e-5,
           max_steps=1500,
           logging_steps=50,
           remove_unused_columns=False,

@@ -3,7 +3,7 @@ from peft import get_peft_model, LoraConfig, TaskType
 from transformers import AutoModel # type: ignore
 
 def prepare_model(model_path):
-  model = AutoModel.from_pretrained(model_path, trust_remote_code=True,load_in_8bit=True,device_map="auto")
+  model = AutoModel.from_pretrained(model_path, trust_remote_code=True,device_map="auto")
   model.gradient_checkpointing_enable()
   model.enable_input_require_grads()
   model.is_parallelizable = True
