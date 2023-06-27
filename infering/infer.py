@@ -5,18 +5,20 @@ import torch
 def get_model(model_path):
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     model = AutoModel.from_pretrained(model_path, trust_remote_code=True,device_map="auto")
-    model.eval() #model to freeze
     return model, tokenizer
 
 def get_peft_model(model_path, lora_path):
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     model = AutoModel.from_pretrained(model_path, trust_remote_code=True,device_map="auto")
     model = PeftModel.from_pretrained(model, lora_path)
-    model.eval() #model to freeze
     return model, tokenizer
 
 class ChatBot:
     def __init__(self, model, tokenizer):
+        model.eval()
+        #if load_8bit is false, we should set model.half()
+        #strange bug
+        model.half()
         self.model = model
         self.tokenizer = tokenizer
     def quick_chat(self, prompt, history=[]):
