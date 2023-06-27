@@ -19,7 +19,7 @@ def training(model_path, dataset_path):
           max_steps=1500,
           logging_steps=50,
           remove_unused_columns=False,
-          seed=0,
+          seed=8,
           data_seed=0,
           group_by_length=False,
       )
