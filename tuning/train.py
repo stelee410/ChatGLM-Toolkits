@@ -18,8 +18,9 @@ def training(model_path, dataset_path):
           learning_rate = 2e-5,
           max_steps=1500,
           logging_steps=50,
+          num_train_epochs=35,
           remove_unused_columns=False,
-          seed=8,
+          seed=6,
           data_seed=0,
           group_by_length=False,
       )
