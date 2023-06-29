@@ -15,10 +15,10 @@ def get_peft_model(model_path, lora_path):
 
 class ChatBot:
     def __init__(self, model, tokenizer):
-        model.eval()
+    
         #if load_8bit is false, we should set model.half()
-        #strange bug
-        model.half()
+        model.half().cuda()
+        model.eval()
         self.model = model
         self.tokenizer = tokenizer
     def quick_chat(self, prompt, history=[]):
